@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+usage() {
+  echo "Usage: gh reset <repo> <source> <target>"
+}
+
+if [ $# -lt 3 ]; then
+  usage >&2
+  exit 1
+fi
+
+repo="$1"
+source="$2"
+target="$3"
+
+if [ -d "/tmp/$repo" ]
+then
+  rm -rf "/tmp/$repo"
+fi
+
+gh repo clone "$repo" "/tmp/$repo" -- -b "$target" && \
+cd "/tmp/$repo" && \
+git reset --hard "origin/$source" && \
+git push -f -u origin "$target"
