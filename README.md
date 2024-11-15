@@ -1,6 +1,6 @@
 # gh reset
 
-A GitHub CLI extension to get reset a git branch (target) to another remote branch (source) locally then push these changes.
+A GitHub CLI extension to reset a Git branch (target) to another remote branch (source) locally and then push the changes.
 
 ### Usage
 
